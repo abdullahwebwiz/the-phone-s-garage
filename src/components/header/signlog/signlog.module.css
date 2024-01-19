@@ -1,0 +1,17 @@
+.main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  z-index: 2;
+}
+
+@media screen and (max-width: 780px) {
+  .main {
+    display: none;
+  }
+}
