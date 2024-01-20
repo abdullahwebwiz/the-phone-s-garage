@@ -1,12 +1,12 @@
 import Image from "next/image";
 import style from "./subcategory.module.css";
-const SubCategory = ({ img,name }) => {
+const SubCategory = ({ img,name,bn }) => {
   return (
     <div className={style.main}>
       <div className={style.imgcon}>
         {" "}
         <Image
-          src={"/blob.svg"}
+          src={"/blob"+bn+".svg"}
           width={130}
           height={130}
           className={style.blob}

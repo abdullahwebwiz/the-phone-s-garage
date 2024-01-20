@@ -1,0 +1,167 @@
+.main {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window {
+  position: relative;
+  width: 1200px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 0;
+  animation: myanime 25s ease-in-out infinite;
+  width: calc(1200px * 4);
+}
+.banner {
+  width: 1200px;
+}
+
+.arrowleft {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  left: 0;
+}
+.arrowright {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  right: 0;
+}
+
+.arrowright img {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.4s ease-in all;
+}
+
+.arrowright img:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.arrowleft img {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.4s ease-in all;
+}
+
+.arrowleft img:hover {
+  background-color: rgba(0, 0, 0, 0.088);
+}
+
+@media screen and (max-width: 1115px) {
+  .window {
+    width: 1000px;
+  }
+  .bar {
+    width: calc(1000px * 4);
+  }
+  .banner {
+    width: 1000px;
+  }
+}
+@media screen and (max-width: 1010px) {
+  .window {
+    width: 800px;
+  }
+  .bar {
+    width: calc(800px * 4);
+  }
+  .banner {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .window {
+    width: 500px;
+  }
+  .bar {
+    width: calc(500px * 4);
+  }
+  .banner {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .window {
+    width: 400px;
+  }
+  .bar {
+    width: calc(400px * 4);
+  }
+  .banner {
+    width: 400px;
+    height: calc(400px / 1.66);
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .window {
+    width: 350px;
+  }
+  .bar {
+    width: calc(350px * 4);
+  }
+  .banner {
+    width: 350px;
+    height: calc(350px / 1.66);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .window {
+    width: 300px;
+  }
+  .bar {
+    width: calc(300px * 4);
+  }
+  .banner {
+    width: 300px;
+    height: calc(300px / 1.66);
+  }
+}
+
+@keyframes myanime {
+  0% {
+    margin-left: 0;
+  }
+  14% {
+    margin-left: 0;
+  }
+  28% {
+    margin-left: -100%;
+  }
+  42% {
+    margin-left: -100%;
+  }
+  56% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+  85% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
