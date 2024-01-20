@@ -1,9 +1,9 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import style from "./banners.module.css";
 import Image from "next/image";
 const Banners = () => {
-  console.log(window.innerWidth);
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
   return (
     <div className={style.main}>
       <div className={style.window}>
@@ -13,7 +13,7 @@ const Banners = () => {
         <div className={style.arrowright}>
           <Image src={"/arrowright.png"} width={40} height={40} />
         </div>
-        {window.innerWidth >= 800 ? (
+        {windowSize.current[0] >= 800 ? (
           <div className={style.bar}>
             <Image
               src={"/banners/1.png"}
