@@ -20,10 +20,15 @@
   flex-wrap: nowrap;
   margin-left: 0;
   animation: myanime 25s ease-in-out infinite;
+  transition: 0.4s ease-in all;
   width: calc(1200px * 4);
+}
+.noanime {
+  animation: none !important;
 }
 .banner {
   width: 1200px;
+  cursor: pointer;
 }
 
 .arrowleft {
@@ -46,11 +51,11 @@
   border-radius: 50%;
   padding: 10px;
   cursor: pointer;
-  transition: 0.4s ease-in all;
+  transition: 0.3s linear all;
 }
 
 .arrowright img:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .arrowleft img {
@@ -58,11 +63,15 @@
   border-radius: 50%;
   padding: 10px;
   cursor: pointer;
-  transition: 0.4s ease-in all;
+  transition: 0.3s linear all;
 }
 
 .arrowleft img:hover {
-  background-color: rgba(0, 0, 0, 0.088);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.y {
+  display: none;
 }
 
 @media screen and (max-width: 1115px) {
@@ -89,6 +98,12 @@
 }
 
 @media screen and (max-width: 800px) {
+  .y {
+    display: flex;
+  }
+  .x {
+    display: none;
+  }
   .window {
     width: 500px;
   }
@@ -101,6 +116,12 @@
 }
 
 @media screen and (max-width: 530px) {
+  .y {
+    display: flex;
+  }
+  .x {
+    display: none;
+  }
   .window {
     width: 400px;
   }
@@ -114,6 +135,12 @@
 }
 
 @media screen and (max-width: 415px) {
+  .y {
+    display: flex;
+  }
+  .x {
+    display: none;
+  }
   .window {
     width: 350px;
   }
@@ -127,6 +154,12 @@
 }
 
 @media screen and (max-width: 360px) {
+  .y {
+    display: flex;
+  }
+  .x {
+    display: none;
+  }
   .window {
     width: 300px;
   }
