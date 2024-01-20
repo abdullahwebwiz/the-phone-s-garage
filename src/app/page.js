@@ -4,6 +4,7 @@ import Header from "@/components/header/header";
 import Categories from "@/components/categories/categories";
 import Banners from "@/components/banners/banners";
 export default function Home() {
+
   return (
     <div>
       {" "}

@@ -1,8 +1,9 @@
 "use client";
-import { useEffect,useRef } from "react";
+import { useEffect, useRef } from "react";
 import style from "./banners.module.css";
 import Image from "next/image";
 const Banners = () => {
+  console.log(window);
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
   return (
     <div className={style.main}>
