@@ -1,0 +1,92 @@
+.main {
+  background-color: #25a1ff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  width: 600px;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 8px;
+  border-radius: 20px;
+}
+.textcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+.whyusimg {
+  width: 150px;
+  height: 150px;
+  margin-left: 5px;
+}
+.textcon div {
+  text-align: center;
+}
+
+.maintext {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+.subtext {
+  padding: 0 5%;
+}
+.but {
+  background-color: gold;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.3s ease-in all;
+}
+
+.but:hover {
+  transform: scale(1.1);
+}
+@media screen and (max-width: 1250px) {
+  .main {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .main {
+    width: 300px;
+  }
+  .whyusimg {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media screen and (max-width: 650px) {
+    .main {
+      width: 100%;
+    }
+    .whyusimg {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    .main {
+      width: 100%;
+    }
+    .whyusimg {
+      width: 120px;
+      height: 120px;
+    }
+    .maintext{
+        font-size: 20px;
+    }
+.subtext{
+    font-size:14px ;
+}
+  }
+  

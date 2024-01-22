@@ -1,0 +1,41 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 30px;
+}
+
+.brandtext {
+  width: 330px;
+  height: 45px;
+  border: 2px solid #25a1ff;
+  font-size: 17px;
+  color: #0978ce;
+  padding-left: 10px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.brandtext::placeholder {
+  color: #0978ce;
+}
+.brandtext::-webkit-input-placeholder {
+  color: #0978ce;
+}
+.brandtext:focus {
+  /* border: 2px solid #25a1ff; */
+  outline: 2px solid #25a1ff;
+}
+.brandbutton {
+  height: 45px;
+  width: 150px;
+  background-color: #25a1ff;
+  border: none;
+  outline: none;
+  color: white;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+}

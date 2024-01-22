@@ -1,0 +1,20 @@
+.main {
+  width: 100%;
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 60px;
+  position: relative;
+}
+.title {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  text-align: center;
+  font-size: 30px;
+  color: #25a1ff;
+  width: 100%;
+}

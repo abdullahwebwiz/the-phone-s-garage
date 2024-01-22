@@ -1,0 +1,17 @@
+.one {
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: brit;
+  }
+  .oneimg{
+  transition: 0.3s ease-in all;
+  }
+  .oneimg:hover {
+    transform: scale(1.2);
+  }
+  
