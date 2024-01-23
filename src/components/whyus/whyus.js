@@ -26,7 +26,7 @@ const WhyUs = () => {
   ];
   return (
     <div className={style.main}>
-      <div className={style.title}>Why Choose The Phone's Garage</div>
+      <div className={style.title}>Why Choose The Phone's Garage 🤝</div>
       {mydata.map((data, index) => {
         return (
           <WhyUsOne

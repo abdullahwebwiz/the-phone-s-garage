@@ -1,0 +1,50 @@
+.main {
+  width: 400px;
+  height: 200px;
+  border: 3px solid #25a1ff;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: white;
+  box-shadow: 7px 7px 0px #0091ff;
+}
+
+@media screen and (max-width: 420px) {
+  .main {
+    width: 250px;
+  }
+}
+
+.customer_name {
+  width: 100%;
+  text-align: left;
+  padding-left: 5px;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.message {
+  width: 100%;
+  text-align: center;
+  padding: 0 5%;
+  font-size: 18px;
+  color: gray;
+}
+.stars {
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.star img {
+  margin: 4px;
+}

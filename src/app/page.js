@@ -8,6 +8,10 @@ import ProductSection from "@/components/productsection/productsection";
 import { data1, data2, data3 } from "@/data/data1";
 import Banner11 from "@/components/banner11/banner11";
 import WhyUs from "@/components/whyus/whyus";
+import ReviewSection from "@/components/reviewsection/reviewsection";
+import NewsLetter from "@/components/newsletter/newsletter";
+import BlogSection from "@/components/blogsection/blogsection";
+import Footer from "@/components/footer/footer";
 console.log(data1);
 export default function Home() {
   return (
@@ -18,14 +22,18 @@ export default function Home() {
       <Banners />
       <Brands />
       <ProductSection
-        title={"Accessories"}
+        title={"Accessories 🎧"}
         data={data1}
         folder={"accessories"}
       />
-      <ProductSection title={"Batteries"} data={data2} folder={"batteries"} />
+      <ProductSection title={"Batteries 🔋"} data={data2} folder={"batteries"} />
       <Banner11 />
-      <ProductSection title={"Tools"} data={data3} folder={"tools"} />
-      <WhyUs/>
+      <ProductSection title={"Tools 🛠️"} data={data3} folder={"tools"} />
+      <WhyUs />
+      <ReviewSection />
+      <NewsLetter />
+      <BlogSection/>
+      <Footer/>
     </div>
   );
 }
