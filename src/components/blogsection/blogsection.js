@@ -1,45 +1,39 @@
 import style from "./blogsection.module.css";
 import BlogCard from "./blogcard/blogcard";
-const BlogSection = () => {
-  let posts = [
-    {
-      img: "1",
-      title: "Phone Jailbreaking Guide",
-      description:
-        "Unlock hidden features and customize your mobile experience with this comprehensive phone jailbreaking tutorial.",
-    },
-    {
-      img: "2",
-      title: "Maximizing Phone Battery Life",
-      description:
-        "Discover practical strategies to extend your phone's battery longevity and optimize overall performance.",
-    },
-    {
-      img: "3",
-      title: "Easy DIY Phone Repairs",
-      description:
-        "Empower yourself with step-by-step guides to fix common phone issues independently, saving time and money.",
-    },
-    {
-      img: "4",
-      title: "Easy DIY Phone Repairs",
-      description:
-        "Empower yourself with step-by-step guides to fix common phone issues independently, saving time and money.",
-    },
-  ];
+import Link from "next/link";
+import * as contentful from "contentful";
+
+let data = async () => {
+  const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  });
+  let result = await client.getEntries({
+    content_type: "blogPost",
+  });
+  return result.items;
+};
+const BlogSection = async () => {
+  let data1 = await data();
 
   return (
     <div className={style.main}>
       <div className={style.title}>Blogs & News 📝</div>
       <div className={style.blogscon}>
-        {posts.map((data, index) => {
+        {data1.map((data, index) => {
           return (
-            <BlogCard
-              title={data.title}
-              description={data.description}
-              key={index}
-              img={data.img}
-            />
+            <Link
+              href={"/blogs/" + data.fields.postid}
+              style={{ color: "black" }}
+            >
+              {" "}
+              <BlogCard
+                title={data.fields.title}
+                img={`https:${data.fields.thumbnail.fields.file.url}`}
+                x={false}
+                key={data.fields.postid}
+              />
+            </Link>
           );
         })}
       </div>

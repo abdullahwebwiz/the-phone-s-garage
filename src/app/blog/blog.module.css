@@ -1,0 +1,23 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.postcon {
+  width: 90%;
+  background-color: white;
+  padding: 10px;
+}
+.title {
+  width: 100%;
+  text-align: justify;
+  font-weight: 600;
+  font-size: 25px;
+}
+.body {
+  width: 100%;
+  text-align: justify;
+  font-size: 18px;
+  margin-top: 20px;
+}

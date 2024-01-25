@@ -23,7 +23,7 @@ const WhyUs = () => {
       title: "Top-Notch Support",
       subtext: "Get support from our care program on any matter.",
     },
-  ];
+  ];       
   return (
     <div className={style.main}>
       <div className={style.title}>Why Choose Us 🤝</div>

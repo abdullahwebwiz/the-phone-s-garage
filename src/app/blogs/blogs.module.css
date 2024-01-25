@@ -1,0 +1,44 @@
+.main1 {
+  width: 100%;
+}
+.title1 {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: #25a1ff;
+  padding: 20px 0;
+}
+.blogscon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+
+.main2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.postcon {
+  width: 90%;
+  background-color: white;
+  padding: 10px;
+}
+.title2 {
+  width: 100%;
+  text-align: justify;
+  font-weight: 600;
+  font-size: 25px;
+}
+.body {
+  width: 100%;
+  text-align: justify;
+  font-size: 18px;
+  margin-top: 20px;
+}

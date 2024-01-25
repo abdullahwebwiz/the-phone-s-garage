@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "@/components/header/header";
@@ -12,7 +13,10 @@ import ReviewSection from "@/components/reviewsection/reviewsection";
 import NewsLetter from "@/components/newsletter/newsletter";
 import BlogSection from "@/components/blogsection/blogsection";
 import Footer from "@/components/footer/footer";
-console.log(data1);
+
+
+
+
 export default function Home() {
   return (
     <div>
@@ -26,14 +30,18 @@ export default function Home() {
         data={data1}
         folder={"accessories"}
       />
-      <ProductSection title={"Batteries 🔋"} data={data2} folder={"batteries"} />
+      <ProductSection
+        title={"Batteries 🔋"}
+        data={data2}
+        folder={"batteries"}
+      />
       <Banner11 />
       <ProductSection title={"Tools 🛠️"} data={data3} folder={"tools"} />
       <WhyUs />
       <ReviewSection />
       <NewsLetter />
-      <BlogSection/>
-      <Footer/>
+      <BlogSection />
+      <Footer />
     </div>
   );
 }
