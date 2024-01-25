@@ -2,19 +2,10 @@ import style from "./blogsection.module.css";
 import BlogCard from "./blogcard/blogcard";
 import Link from "next/link";
 import * as contentful from "contentful";
+import { BlogsData } from "@/data/data2";
 
-let data = async () => {
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
-  let result = await client.getEntries({
-    content_type: "blogPost",
-  });
-  return result.items;
-};
 const BlogSection = async () => {
-  let data1 = await data();
+  let data1 = await BlogsData();
 
   return (
     <div className={style.main}>

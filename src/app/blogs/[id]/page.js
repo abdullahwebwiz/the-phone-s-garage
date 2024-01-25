@@ -36,7 +36,7 @@ const Page = async (props) => {
 
 export default Page;
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams() {
   let data1 = await BlogsData();
   return data1.map((data) => {
     id: data.fields.postid.toString();

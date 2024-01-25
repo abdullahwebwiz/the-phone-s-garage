@@ -14,8 +14,7 @@ import NewsLetter from "@/components/newsletter/newsletter";
 import BlogSection from "@/components/blogsection/blogsection";
 import Footer from "@/components/footer/footer";
 
-
-export default async function  Home() {
+export default  function Home() {
 
   return (
     <div>
