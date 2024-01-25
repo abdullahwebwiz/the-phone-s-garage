@@ -30,6 +30,7 @@ const Page = async () => {
               <Link
                 href={"/blogs/" + data.fields.postid}
                 style={{ color: "black" }}
+                key={data.fields.postid}
               >
                 {" "}
                 <BlogCard
