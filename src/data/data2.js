@@ -1,11 +1,23 @@
 import * as contentful from "contentful";
-let postBody = async () => {
+export let BlogsData = async () => {
   const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
-  let data = await client.getEntry("4cfuiQmJT96sjcouwBBXfO");
-  let x = await data.json();
-  return x;
+  let result = await client.getEntries({
+    content_type: "blogPost",
+  });
+  return result.items;
 };
-export default postBody;
+
+export let onePostData = async (id) => {
+  const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  });
+  let result = await client.getEntries({
+    content_type: "blogPost",
+    "fields.postid": id.toString(),
+  });
+  return result;
+};

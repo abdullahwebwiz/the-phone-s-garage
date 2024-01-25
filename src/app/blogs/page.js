@@ -5,20 +5,10 @@ import * as contentful from "contentful";
 import Link from "next/link";
 import Footer from "@/components/footer/footer";
 import NewsLetter from "@/components/newsletter/newsletter";
-
-let data = async () => {
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
-  let result = await client.getEntries({
-    content_type: "blogPost",
-  });
-  return result.items;
-};
+import { BlogsData } from "@/data/data2";
 
 const Page = async () => {
-  let data1 = await data();
+  let data1 = await BlogsData();
   return (
     <>
       <Header />
@@ -51,9 +41,4 @@ const Page = async () => {
 };
 export default Page;
 
-export const generateStaticParams = async () => {
-  let data1 = await data();
-  return data1.map((data) => {
-    id: data.fields.postid.toString();
-  });
-};
+

@@ -5,22 +5,10 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { format } from "date-fns";
 import NewsLetter from "@/components/newsletter/newsletter";
 import Footer from "@/components/footer/footer";
-
-let data = async (id) => {
-  console.log(id);
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
-  let result = await client.getEntries({
-    content_type: "blogPost",
-    "fields.postid": id.toString(),
-  });
-  return result;
-};
+import { onePostData,BlogsData } from "@/data/data2";
 
 const Page = async (props) => {
-  let x = await data(props.params.id);
+  let x = await onePostData(props.params.id);
   console.log(x.items[0].sys.createdAt);
   const formattedDate = format(
     new Date(x.items[0].sys.createdAt),
@@ -47,3 +35,10 @@ const Page = async (props) => {
 };
 
 export default Page;
+
+export const generateStaticParams = async () => {
+  let data1 = await BlogsData();
+  return data1.map((data) => {
+    id: data.fields.postid.toString();
+  });
+};
