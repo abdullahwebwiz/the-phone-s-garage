@@ -5,7 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { format } from "date-fns";
 import NewsLetter from "@/components/newsletter/newsletter";
 import Footer from "@/components/footer/footer";
-import { onePostData,BlogsData } from "@/data/data2";
+import { onePostData, BlogsData } from "@/data/data2";
 
 const Page = async (props) => {
   let x = await onePostData(props.params.id);
@@ -39,6 +39,11 @@ export default Page;
 export async function generateStaticParams() {
   let data1 = await BlogsData();
   return data1.map((data) => {
-    id: data.fields.postid.toString();
+    return {
+      params: {
+        id: data.fields.postid.toString(),
+      },
+      revalidate: 5,
+    };
   });
-};
+}
