@@ -1,105 +1,47 @@
 const { createSlice } = require("@reduxjs/toolkit");
-
+let userid = localStorage.getItem("userid");
 let initialState = {
-  showShortMenu: false,
-  searchbarCategoryList: [
-    "All Categories",
-    "Power Banks",
-    "Housing",
-    "LCD & Touch screens",
-    "Battery",
-    "Flip Cover",
-    "Ear Phones",
-    "Ringer",
-    "Ear Speaker",
-    "Tempered Tool Glass",
-    "Opening Tool Set",
-  ],
-
-  whichNav: "none",
-
-  navOneList: {
-    one: ["Display Screen", "Touch Screen", "LCD"],
-    two: null,
-    three: null,
-    four: null,
+  user_data: {
+    user_name: "",
+    user_phone: "",
+    user_city: "",
+    user_address: "",
+    password: "",
   },
-  navTwoList: {
-    one: ["Battery", "Cases & Covers", "Headphones & Earphones", "Chargers"],
-    two: [
-      "Tempered Glass",
-      "Protective Films and Glasses",
-      "Adapters & Cables",
-      "Power Bank",
-    ],
-    three: [
-      "Selfie Flash Light",
-      "Selfie Stick",
-      "Mobile Docks & Stands",
-      "Bluetooth KeyBoard",
-    ],
-    four: ["Keyboard", "Mini Selfie Stick", "Fitness Band", "IP Camera"],
-  },
-  navThreeList: {
-    one: ["Display Screen", "Touch Screen", "LCD", "Front Glass"],
-    two: ["Camera", "Loud Speaker", "Ringer", "Charging Jacks"],
-    three: ["Ear Speaker", "Microphone - Mic", "Housing", "Connectors"],
-    four: [
-      "Handfree Jack",
-      "Vibrator",
-      "Buttons & Joysticks",
-      "Sim Tray - Holder",
-    ],
-  },
-  navFourList: {
-    one: ["Opening Tool Set", "Screw Driver", "Glue", "Suction Cup Tool"],
-    two: [
-      "Sim Cutter",
-      "Soldering Equipment",
-      "Touch Changing Machine",
-      "Screw Set",
-    ],
-    three: ["Battery Booster", "BGA Kit", "Multimeter", "Sim Ejector Pin"],
-    four: ["Paste & Gel", "Tape"],
-  },
-  navFiveList: {
-    one: [
-      "Face Masks",
-      "Indoor LED Lighting",
-      "Street Light Fixtures",
-      "Solar Panels",
-    ],
-    two: null,
-    three: null,
-    four: null,
-  },
+  userid: userid ? userid : false,
 };
 
 const slice = createSlice({
   name: "firstslice",
-  initialState, // Corrected variable name
+  initialState,
   reducers: {
-    updateMenuStatus: (state, action) => {
-      let data = action;
-      console.log(data.payload);
-      state.menuStatus = data.payload;
+    updateUserName: (state, action) => {
+      state.user_data.user_name = action.payload;
     },
-    menuStatusAction: (state, action) => {
-      state.showMenu = action.payload;
+    updateUserPhone: (state, action) => {
+      state.user_data.user_phone = action.payload;
     },
-    updateWhichNav: (state, action) => {
-      state.whichNav = action.payload;
+    updateUserCity: (state, action) => {
+      state.user_data.user_city = action.payload;
     },
-    updateShortMenu: (state, action) => {
-      state.showShortMenu = !state.showShortMenu;
+    updateUserAddress: (state, action) => {
+      state.user_data.user_address = action.payload;
+    },
+    updatePassword: (state, action) => {
+      state.user_data.password = action.payload;
+    },
+    updateuserid: (state, action) => {
+      state.userid = action.payload;
     },
   },
 });
 
 export const {
-  updateMenuStatus,
-  menuStatusAction,
-  updateWhichNav,
-  updateShortMenu,
+  updateUserName,
+  updatePassword,
+  updateUserPhone,
+  updateUserAddress,
+  updateUserCity,
+  updateuserid,
 } = slice.actions;
 export default slice.reducer;

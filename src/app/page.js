@@ -14,7 +14,11 @@ import NewsLetter from "@/components/newsletter/newsletter";
 import BlogSection from "@/components/blogsection/blogsection";
 import Footer from "@/components/footer/footer";
 
-export default  function Home() {
+export default function Home() {
+  console.log(process.env);
+  console.log(
+    "DO NOT EDIT OR ADD ANYTHING HERE. IF YOU DID WEBSITE WILL NOT WORK PROPERLY!!"
+  );
 
   return (
     <div>
