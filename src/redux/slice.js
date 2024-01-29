@@ -1,5 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit");
-let userid = localStorage.getItem("userid");
+let userid =
+  typeof window !== "undefined" ? window.localStorage.getItem("signin") : false;
+
 let initialState = {
   user_data: {
     user_name: "",
