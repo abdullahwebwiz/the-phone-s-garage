@@ -12,6 +12,7 @@ const AdminPassword = () => {
     e.preventDefault();
     if (value == process.env.MAIN_ADMIN_PASSWORD) {
       dispatch(updateAdminAuth());
+      
     } else {
       Swal.fire({
         icon: "error",
