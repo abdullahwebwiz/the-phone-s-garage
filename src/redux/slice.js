@@ -11,6 +11,7 @@ let initialState = {
     password: "",
   },
   userid: userid ? userid : false,
+  adminAuth: false,
 };
 
 const slice = createSlice({
@@ -35,6 +36,9 @@ const slice = createSlice({
     updateuserid: (state, action) => {
       state.userid = action.payload;
     },
+    updateAdminAuth: (state, action) => {
+      state.adminAuth = true;
+    },
   },
 });
 
@@ -45,5 +49,6 @@ export const {
   updateUserAddress,
   updateUserCity,
   updateuserid,
+  updateAdminAuth,
 } = slice.actions;
 export default slice.reducer;
