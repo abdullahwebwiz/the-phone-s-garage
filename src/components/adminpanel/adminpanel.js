@@ -22,7 +22,13 @@ const AdminPanel = () => {
             users
           </div>
         </Link>
-        <Link href={"/admin/posts"}>
+        <Link href={"/admin/oneuser"}>
+          {" "}
+          <div className={style.card} style={{ backgroundColor: "brown" }}>
+            One User
+          </div>
+        </Link>
+        <Link href={"https://www.contentful.com/"} target="_blank">
           {" "}
           <div className={style.card} style={{ backgroundColor: "purple" }}>
             Posts

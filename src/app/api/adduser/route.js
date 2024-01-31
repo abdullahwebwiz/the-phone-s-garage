@@ -1,4 +1,4 @@
-import { mdb_url } from "@/lib/model/db";
+import { mdb_url } from "@/lib/db";
 import { User } from "@/lib/model/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";

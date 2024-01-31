@@ -12,6 +12,7 @@ let initialState = {
   },
   userid: userid ? userid : false,
   adminAuth: false,
+  usersList: [],
 };
 
 const slice = createSlice({
