@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 
 const brandModel = new mongoose.Schema({
-  userId: String,
-  time: String,
-  status: String,
-  products: Array,
+  b_id: String,
+  name: String,
+  models: Array,
 });
 
 export const Brand =

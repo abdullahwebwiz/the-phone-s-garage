@@ -10,28 +10,22 @@ const ProductPanel = () => {
             Brand Products
           </div>
         </Link>
-        <Link href={"/admin/tools"}>
+        <Link href={"/admin/products/tools"}>
           {" "}
           <div className={style.card} style={{ backgroundColor: "Green" }}>
             Tools
           </div>
         </Link>
-        <Link href={"/admin/accessories"}>
+        <Link href={"/admin/products/accessories"}>
           {" "}
           <div className={style.card} style={{ backgroundColor: "Blue" }}>
             Accessories
           </div>
         </Link>
-        <Link href={"/admin/addbrand"}>
+        <Link href={"/admin/products/addbrand"}>
           {" "}
           <div className={style.card} style={{ backgroundColor: "Brown" }}>
             Add brand
-          </div>
-        </Link>
-        <Link href={"/admin/addmodel"}>
-          {" "}
-          <div className={style.card} style={{ backgroundColor: "gold" }}>
-            Add Model
           </div>
         </Link>
       </div>

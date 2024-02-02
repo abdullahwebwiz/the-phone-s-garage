@@ -8,9 +8,6 @@ const Page = () => {
   const [listinc, setlistinc] = useState(10);
   let adminAuth = useSelector((data) => data.reducer1.adminAuth);
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
 
   useEffect(() => {
     const fetchData = async () => {
