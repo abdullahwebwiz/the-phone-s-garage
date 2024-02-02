@@ -1,5 +1,5 @@
 import { mdb_url } from "@/lib/db";
-import { Product2 } from "@/lib/model/product2";
+import { Product1 } from "@/lib/model/product1";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -10,20 +10,22 @@ export const POST = async (req) => {
   if (payload) {
     try {
       await mongoose.connect(mdb_url);
-      let users = new Product2({
-        p_id:
-          Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) +
-          1000000000,
+      const newData = {
         name: payload.name,
         price: payload.price,
         description: payload.description,
-        img: Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000,
         video: payload.video,
         discount: payload.discount,
-      });
-      let result = await users.save();
-      console.log(result);
-      if (result) {
+        __v: 0,
+      };
+      let data = await Product1.findOneAndUpdate(
+        { p_id: payload.p_id },
+        { $set: newData },
+        { new: true }
+      );
+
+      console.log(data);
+      if (data) {
         return NextResponse.json({ msg: "success" });
       } else {
         return NextResponse.json({ msg: "failed" });

@@ -13,5 +13,5 @@ const product1Model = new mongoose.Schema({
   type: String,
 });
 
-export const Product1 =
-  mongoose.models.products1 || mongoose.model("products1", product1Model());
+export const Product1 = 
+  mongoose.models.products1 || mongoose.model("products1", product1Model);

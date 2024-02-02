@@ -1,5 +1,5 @@
 "use client";
-import style from "./accessories.module.css";
+import style from "./brandproducts.module.css";
 import AdminPassword from "@/components/adminpassword/adminpassword";
 import ProductPanel from "@/components/productpanel/productpanel";
 import Link from "next/link";
@@ -28,7 +28,7 @@ const Page = () => {
     if (name && price && description && discount && video) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/accessories/addproduct",
+          "http://localhost:3000/api/brandproducts/addproduct",
           {
             method: "POST",
             headers: {
@@ -64,7 +64,7 @@ const Page = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/accessories/getproducts/" + amount,
+        "http://localhost:3000/api/brandproducts/getproducts/" + amount,
         { cache: "no-store" }
       );
       if (!response.ok) {
@@ -81,7 +81,7 @@ const Page = () => {
     if (p_id) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/accessories/deleteproduct/" + p_id
+          "http://localhost:3000/api/brandproducts/deleteproduct/" + p_id
         );
         const data = await response.json();
         console.log(data);
@@ -112,7 +112,7 @@ const Page = () => {
       if (name && price && description && discount && video) {
         try {
           const response = await fetch(
-            "http://localhost:3000/api/accessories/updateproduct",
+            "http://localhost:3000/api/brandproducts/updateproduct",
             {
               method: "POST",
               headers: {
