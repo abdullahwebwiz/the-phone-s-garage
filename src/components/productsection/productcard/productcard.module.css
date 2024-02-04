@@ -4,14 +4,16 @@
   margin: 7px;
   padding: 10px;
   cursor: pointer;
+  position: relative;
+  text-decoration: none !important;
 }
 .productimg {
   max-width: 100%;
   height: auto;
-transition: 0.3s ease-in all;
+  transition: 0.3s ease-in all;
 }
-.productimg:hover{
-transform: scale(1.1);
+.productimg:hover {
+  transform: scale(1.1);
 }
 .title {
   width: 100%;
@@ -45,13 +47,13 @@ transform: scale(1.1);
 }
 
 @media screen and (max-width: 450px) {
-.main{
-  width: 150px;
-}
+  .main {
+    width: 150px;
+  }
 }
 
 @media screen and (max-width: 350px) {
-  .main{
+  .main {
     width: 120px;
   }
-  }
+}

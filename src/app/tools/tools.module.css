@@ -1,0 +1,81 @@
+.main {
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.maincon {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  /* height: 100px; */
+  margin-top: 20px;
+}
+.desp {
+  width: 100%;
+  background-color: white;
+  height: 100px;
+  font-size: 21px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.navshow {
+  width: 100%;
+  text-align: left;
+  color: rgb(12, 170, 12);
+  margin: 10px;
+  word-spacing: 10px;
+  font-size: 19px;
+}
+
+.imgtitle {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.details {
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  text-align: left;
+  font-size: 22px;
+  padding: 10px;
+}
+
+.prices {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  padding: 10px;
+  color: hotpink;
+  font-weight: 600;
+  word-spacing: 10px;
+  font-size: 20px;
+}
+
+.buttons {
+  width: 100%;
+}
+.buttons button {
+  margin: 10px;
+}
+
+@media screen and (max-width: 460px) {
+  .imgtitle {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+  .buttons button {
+    margin: 2px;
+  }
+}

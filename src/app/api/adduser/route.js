@@ -17,8 +17,8 @@ export const POST = async (req) => {
       user_address: payload.user_address,
       password: payload.password,
       data_joined: payload.data_joined,
-      wishlist: { msg: "success" },
-      carts: { msg: "success" },
+      wishlist: [],
+      carts: [],
     });
     let result = await users.save();
     console.log(result);

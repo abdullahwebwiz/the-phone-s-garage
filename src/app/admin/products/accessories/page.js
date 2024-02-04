@@ -8,14 +8,6 @@ import { useSelector } from "react-redux";
 const Page = () => {
   let [amount, setamount] = useState(10);
   let [products, setproducts] = useState(null);
-  let [newProduct, setnewProduct] = useState({
-    p_id: "",
-    name: "",
-    price: "",
-    description: "",
-    video: "",
-    discount: "",
-  });
   let adminAuth = useSelector((data) => data.reducer1.adminAuth);
 
   const addProduct = async () => {

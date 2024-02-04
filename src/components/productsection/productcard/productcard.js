@@ -1,13 +1,14 @@
 import Image from "next/image";
 import style from "./productcard.module.css";
-const ProductCard = ({ title, img, price, discount,folder, link }) => {
+import Link from "next/link";
+const ProductCard = ({ title, img, price, discount, folder, link }) => {
   let x = discount / 100;
   let y = x * price;
   let orignalPrice = y + price;
   return (
     <div className={style.main}>
       <Image
-        src={"/"+folder+"/" + img + ".png"}
+        src={"/" + folder + "/" + img + ".png"}
         width={250}
         height={250}
         className={style.productimg}

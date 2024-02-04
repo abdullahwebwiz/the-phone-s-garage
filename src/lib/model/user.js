@@ -8,8 +8,8 @@ const userModel = new mongoose.Schema({
   user_address: String,
   password: String,
   data_joined: String,
-  wishlist: Object,
-  carts: Object,
+  wishlist: Array,
+  carts: Array,
 });
 
 export const User = mongoose.models.users || mongoose.model("users", userModel);

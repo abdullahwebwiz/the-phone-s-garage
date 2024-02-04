@@ -47,7 +47,6 @@ const Page = () => {
     const { value: newValue } = await Swal.fire({
       title: "Enter Model Name:",
       input: "text",
-      // inputValue: inputValue,
       showCancelButton: true,
       inputValidator: (value) => {
         if (!value) {

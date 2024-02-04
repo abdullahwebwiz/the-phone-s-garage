@@ -1,0 +1,15 @@
+.main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  z-index: 2;
+}
+/* .main img {
+  margin: 10px;
+  cursor: pointer;
+} */

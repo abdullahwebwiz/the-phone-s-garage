@@ -3,12 +3,16 @@ import { User } from "@/lib/model/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 export const GET = async (req, content) => {
-  console.log(content.params.id);
+  let userid = content.params.data[0];
+  let p_id = content.params.data[1];
   try {
     await mongoose.connect(mdb_url);
-    let data = await User.findOne({ user_id: content.params.id });
-    console.log(data);
-    return NextResponse.json(data);
+    let response = await User.findOneAndUpdate(
+      { user_id: userid },
+      { $push: { wishlist: p_id } }
+    );
+    console.log(response);
+    return NextResponse.json({ msg: "success" });
   } catch (error) {
     console.error("Error connecting to MongoDB", error.message);
     return NextResponse.json({ msg: "error" });

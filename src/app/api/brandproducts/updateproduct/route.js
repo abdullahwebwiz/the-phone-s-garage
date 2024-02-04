@@ -16,6 +16,9 @@ export const POST = async (req) => {
         description: payload.description,
         video: payload.video,
         discount: payload.discount,
+        company: payload.company,
+        model: payload.model,
+        type: payload.type,
         __v: 0,
       };
       let data = await Product1.findOneAndUpdate(

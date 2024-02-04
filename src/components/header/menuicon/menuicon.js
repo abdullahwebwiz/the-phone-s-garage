@@ -1,5 +1,5 @@
-import style from "./menuicon.module.css";
 import Image from "next/image";
+import style from "./menuicon.module.css";
 const MenuIcon = () => {
   return (
     <div className={style.menu}>

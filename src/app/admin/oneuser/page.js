@@ -16,7 +16,7 @@ const Page = () => {
   const fetchData = async () => {
     if (userid) {
       try {
-        const response = await fetch("http://localhost:3000/api/oneuser/3995");
+        const response = await fetch("http://localhost:3000/api/oneuser/"+userid);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }

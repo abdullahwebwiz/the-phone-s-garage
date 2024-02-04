@@ -4,63 +4,37 @@ import AdminPassword from "@/components/adminpassword/adminpassword";
 import ProductPanel from "@/components/productpanel/productpanel";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import AddProductForm from "@/components/addproductform/addproductform";
+import {
+  updateProductDescription,
+  updateProductName,
+  updateProductCompany,
+  updateProductModel,
+  updateProductType,
+  updateProductPrice,
+  updateProductDiscount,
+  updateProductVideo,
+  updateProductallow,
+  updateProductId,
+  updateProductEventType,
+} from "@/redux/slice";
+import { useDispatch, useSelector } from "react-redux";
 const Page = () => {
   let [amount, setamount] = useState(10);
   let [products, setproducts] = useState(null);
-  let [newProduct, setnewProduct] = useState({
-    p_id: "",
-    name: "",
-    price: "",
-    description: "",
-    video: "",
-    discount: "",
-  });
+  let [brandlist, setbrandlist] = useState(null);
+
   let adminAuth = useSelector((data) => data.reducer1.adminAuth);
-
-  const addProduct = async () => {
-    const name = prompt("Enter product name:");
-    const description = prompt("Enter product description:");
-    const price = prompt("Enter product price:");
-    const discount = prompt("Enter product discount:");
-    const video = prompt("Enter product video link:");
-
-    if (name && price && description && discount && video) {
-      try {
-        const response = await fetch(
-          "http://localhost:3000/api/brandproducts/addproduct",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: name,
-              price: price,
-              description: description,
-              video: video,
-              discount: discount,
-            }),
-          }
-        );
-        const data = await response.json();
-        console.log(data);
-        if (data.msg == "success") {
-          alert("New product successfully added");
-        } else {
-          alert("Something went wrong. try again later");
-        }
-      } catch (error) {
-        alert("Something went wrong. try again later");
-        console.error("Error fetching data:", error);
-      }
-    } else {
-      alert("Plz fill all fields");
-    }
-  };
+  let product_data = useSelector((data) => data.reducer1.product_data);
+  let dispatch = useDispatch();
   useEffect(() => {
     getData();
+    brandList();
   }, [amount]);
+  useEffect(() => {
+    console.log(product_data);
+  }, [product_data]);
+
   const getData = async () => {
     try {
       const response = await fetch(
@@ -72,6 +46,24 @@ const Page = () => {
       }
       const data = await response.json();
       setproducts(data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const brandList = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/brandproducts/brandslist/",
+        { cache: "no-store" }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      setbrandlist(data);
+      console.log(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -97,51 +89,82 @@ const Page = () => {
     }
   };
 
-  const updateProduct = async (data) => {
-    let confirm = window.confirm("are you sure you want to update the product");
-    if (confirm) {
-      const name = prompt("Enter product name:", data.name);
-      const description = prompt(
-        "Enter product description:",
-        data.description
-      );
-      const price = prompt("Enter product price:", data.price);
-      const discount = prompt("Enter product discount:", data.discount);
-      const video = prompt("Enter product video link:", data.video);
-
-      if (name && price && description && discount && video) {
-        try {
-          const response = await fetch(
-            "http://localhost:3000/api/brandproducts/updateproduct",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                p_id: data.p_id,
-                name: name,
-                price: price,
-                description: description,
-                video: video,
-                discount: discount,
-              }),
-            }
-          );
-          const result = await response.json();
-          console.log(result);
-          if (result.msg == "success") {
-            alert("product successfully updated");
-          } else {
-            alert("Something went wrong. try again later");
+  const addProduct = async () => {
+    if (
+      product_data.name &&
+      product_data.price &&
+      product_data.description &&
+      product_data.discount &&
+      product_data.video &&
+      product_data.company &&
+      product_data.model &&
+      product_data.type
+    ) {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/brandproducts/addproduct",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(product_data),
           }
-        } catch (error) {
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.msg == "success") {
+          alert("New product successfully added");
+          dispatch(updateProductallow());
+        } else {
           alert("Something went wrong. try again later");
-          console.error("Error fetching data:", error);
         }
-      } else {
-        alert("Plz fill all fields");
+      } catch (error) {
+        alert("Something went wrong. try again later");
+        console.error("Error fetching data:", error);
       }
+    } else {
+      alert("Plz fill all fields");
+    }
+  };
+
+  const updateProduct = async () => {
+    if (
+      product_data.name &&
+      product_data.price &&
+      product_data.description &&
+      product_data.discount &&
+      product_data.video &&
+      product_data.company &&
+      product_data.model &&
+      product_data.type
+    ) {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/brandproducts/updateproduct",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(product_data),
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.msg == "success") {
+          alert("product updated successfully");
+          dispatch(updateProductallow());
+          dispatch(updateProductEventType("add"));
+        } else {
+          alert("Something went wrong. try again later");
+        }
+      } catch (error) {
+        alert("Something went wrong. try again later");
+        console.error("Error fetching data:", error);
+      }
+    } else {
+      alert("Plz fill all fields");
     }
   };
 
@@ -160,6 +183,33 @@ const Page = () => {
                   }}
                 >
                   Product id
+                </td>
+                <td
+                  style={{
+                    border: "1px solid red",
+                    textAlign: "left",
+                    padding: "8px",
+                  }}
+                >
+                  Company
+                </td>
+                <td
+                  style={{
+                    border: "1px solid red",
+                    textAlign: "left",
+                    padding: "8px",
+                  }}
+                >
+                  Model
+                </td>
+                <td
+                  style={{
+                    border: "1px solid red",
+                    textAlign: "left",
+                    padding: "8px",
+                  }}
+                >
+                  Type
                 </td>
                 <td
                   style={{
@@ -256,6 +306,33 @@ const Page = () => {
                             padding: "8px",
                           }}
                         >
+                          {data.company}
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid red",
+                            textAlign: "left",
+                            padding: "8px",
+                          }}
+                        >
+                          {data.model}
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid red",
+                            textAlign: "left",
+                            padding: "8px",
+                          }}
+                        >
+                          {data.type}
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid red",
+                            textAlign: "left",
+                            padding: "8px",
+                          }}
+                        >
                           {data.name}
                         </td>
                         <td
@@ -315,7 +392,19 @@ const Page = () => {
                         >
                           <button
                             onClick={() => {
-                              updateProduct(data);
+                              dispatch(updateProductallow());
+                              dispatch(updateProductName(data.name));
+                              dispatch(updateProductPrice(data.price));
+                              dispatch(updateProductDiscount(data.discount));
+                              dispatch(
+                                updateProductDescription(data.description)
+                              );
+                              dispatch(updateProductVideo(data.video));
+                              dispatch(updateProductCompany(data.company));
+                              dispatch(updateProductModel(data.model));
+                              dispatch(updateProductType(data.type));
+                              dispatch(updateProductId(data.p_id));
+                              dispatch(updateProductEventType("update"));
                             }}
                           >
                             Update
@@ -342,6 +431,18 @@ const Page = () => {
                 : ""}
             </tbody>
           </table>
+          {product_data.allow ? (
+            <AddProductForm
+              submitForm={() => addProduct()}
+              updateForm={() => {
+                console.log("llllllooooooll");
+                updateProduct();
+              }}
+              brandList={brandlist}
+            />
+          ) : (
+            ""
+          )}
           <button
             onClick={() => {
               setamount(amount + 5);
@@ -351,7 +452,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => {
-              addProduct();
+              dispatch(updateProductallow());
             }}
           >
             Add Product

@@ -6,7 +6,6 @@ export const GET = async (req, content) => {
   try {
     await mongoose.connect(mdb_url);
     let data = await Brand.find();
-    console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error connecting to MongoDB", error.message);

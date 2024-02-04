@@ -1,12 +1,12 @@
 import { mdb_url } from "@/lib/db";
-import { User } from "@/lib/model/user";
+import { Product2 } from "@/lib/model/product2";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 export const GET = async (req, content) => {
-  console.log(content.params.id);
+  let p_id = content.params.p_id;
   try {
     await mongoose.connect(mdb_url);
-    let data = await User.findOne({ user_id: content.params.id });
+    let data = await Product2.findOne({p_id: p_id});
     console.log(data);
     return NextResponse.json(data);
   } catch (error) {
