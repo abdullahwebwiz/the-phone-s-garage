@@ -6,10 +6,9 @@ import Link from "next/link";
 
 const getProducts = async () => {
   console.log("he");
-  let response = await fetch(
-    process.env.URL+"/api/tools/getproducts/100",
-    { cache: "no-store" }
-  );
+  let response = await fetch(process.env.URL + "/api/tools/getproducts/100", {
+    cache: "no-store",
+  });
   let result = await response.json();
   //   console.log(result);
   return result;
@@ -24,7 +23,11 @@ const Page = async () => {
         {data
           ? data.map((data) => {
               return (
-                <Link href={"/tools/" + data.p_id} style={{ color: "black" }}>
+                <Link
+                  href={"/tools/" + data.p_id}
+                  key={data.p_id}
+                  style={{ color: "black" }}
+                >
                   <ProductCard
                     title={data.name}
                     img={"19"}
