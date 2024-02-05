@@ -28,7 +28,7 @@ const Page = () => {
     if (name && price && description && discount && video) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/tools/addproduct",
+          process.env.URL+"/api/tools/addproduct",
           {
             method: "POST",
             headers: {
@@ -64,7 +64,7 @@ const Page = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/tools/getproducts/" + amount,
+        process.env.URL+"/api/tools/getproducts/" + amount,
         { cache: "no-store" }
       );
       if (!response.ok) {
@@ -81,7 +81,7 @@ const Page = () => {
     if (p_id) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/tools/deleteproduct/" + p_id
+          process.env.URL+"/api/tools/deleteproduct/" + p_id
         );
         const data = await response.json();
         console.log(data);
@@ -112,7 +112,7 @@ const Page = () => {
       if (name && price && description && discount && video) {
         try {
           const response = await fetch(
-            "http://localhost:3000/api/tools/updateproduct",
+            process.env.URL+"/api/tools/updateproduct",
             {
               method: "POST",
               headers: {
@@ -239,7 +239,7 @@ const Page = () => {
               {products
                 ? products.map((data) => {
                     return (
-                      <tr>
+                      <tr key={data.p_id}>
                         <td
                           style={{
                             border: "1px solid red",

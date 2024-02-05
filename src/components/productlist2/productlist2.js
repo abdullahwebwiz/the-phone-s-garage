@@ -5,7 +5,7 @@ const ProductList2 = ({ data, brandId }) => {
   const deletemodel = async (model) => {
     try {
       let response = await fetch(
-        "http://localhost:3000/api/deletemodel/" + brandId + "/" + model
+        process.env.URL+"/api/deletemodel/" + brandId + "/" + model
       );
       let result = await response.json();
       if (result.msg == "success") {
@@ -59,9 +59,9 @@ const ProductList2 = ({ data, brandId }) => {
         </thead>
         <tbody>
           {data
-            ? data.map((data) => {
+            ? data.map((data,index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td
                       style={{
                         border: "1px solid red",

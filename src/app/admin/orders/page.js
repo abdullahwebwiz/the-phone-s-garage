@@ -36,7 +36,7 @@ const Page = () => {
 
         // Fetch request
         fetch(
-          `http://localhost:3000/api/updatestatus/${orderId}/${selectedStatus}`
+          process.env.URL + `/api/updatestatus/${orderId}/${selectedStatus}`
         )
           .then((response) => {
             if (response.ok) {
@@ -77,7 +77,7 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/orders/" + listinc
+          process.env.URL+"/api/orders/" + listinc
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");

@@ -16,7 +16,7 @@ const Page = () => {
   const deleteBrand = async (b_id) => {
     try {
       let response = await fetch(
-        "http://localhost:3000/api/deletebrand/" + b_id
+        process.env.URL+"/api/deletebrand/" + b_id
       );
       let result = await response.json();
       if (result.msg == "success") {
@@ -58,7 +58,7 @@ const Page = () => {
     if (newValue) {
       try {
         let response = await fetch(
-          "http://localhost:3000/api/addmodel/" + b_id + "/" + newValue
+          process.env.URL+"/api/addmodel/" + b_id + "/" + newValue
         );
         let result = await response.json();
         if (result.msg == "success") {
@@ -89,7 +89,7 @@ const Page = () => {
     if (brand) {
       try {
         let response = await fetch(
-          "http://localhost:3000/api/addbrand/" + brand
+          process.env.URL+"/api/addbrand/" + brand
         );
         let result = await response.json();
 
@@ -119,7 +119,7 @@ const Page = () => {
 
   const getBrands = async () => {
     try {
-      let response = await fetch("http://localhost:3000/api/allbrands");
+      let response = await fetch(process.env.URL+"/api/allbrands");
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }

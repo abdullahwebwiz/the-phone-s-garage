@@ -4,5 +4,6 @@ module.exports = {
   },
   env: {
     MAIN_ADMIN_PASSWORD: process.env.MAIN_ADMIN_PASSWORD,
+    URL: process.env.URL,
   },
 };

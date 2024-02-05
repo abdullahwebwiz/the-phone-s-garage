@@ -12,7 +12,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/users", {
+        const response = await fetch(process.env.URL+"/api/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

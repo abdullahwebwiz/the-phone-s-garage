@@ -23,7 +23,7 @@ const Page = ({ params }) => {
   const getProduct = async (p_id) => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/accessories/getproduct/" + params.p_id,
+        process.env.URL + "/api/accessories/getproduct/" + params.p_id,
         { cache: "no-store" }
       );
       const result = await response.json();
@@ -45,7 +45,7 @@ const Page = ({ params }) => {
     if (productid && userid) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/testing/" + userid + "/" + productid,
+          process.env.URL + "/api/addwishlist/" + userid + "/" + productid,
           { cache: "no-store" }
         );
         const result = await response.json();
@@ -123,17 +123,18 @@ const Page = ({ params }) => {
                   >
                     Share
                   </Button>
-                  <Link href={data ? data.video : ""} target={"_blank"}>{" "}
-                  <Button
-                    variant="contained"
-                    endIcon={<YouTubeIcon />}
-                    style={{
-                      backgroundColor: "rgb(245, 67, 67)",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Watch Video
-                  </Button>
+                  <Link href={data ? data.video : ""} target={"_blank"}>
+                    {" "}
+                    <Button
+                      variant="contained"
+                      endIcon={<YouTubeIcon />}
+                      style={{
+                        backgroundColor: "rgb(245, 67, 67)",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Watch Video
+                    </Button>
                   </Link>
                 </div>
               </div>

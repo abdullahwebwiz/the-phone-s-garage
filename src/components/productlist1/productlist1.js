@@ -36,9 +36,9 @@ const ProductList1 = ({ data }) => {
         </thead>
         <tbody>
           {data
-            ? data.map((data) => {
+            ? data.map((data, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td
                       style={{
                         border: "1px solid red",

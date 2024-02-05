@@ -38,7 +38,7 @@ const Page = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/brandproducts/getproducts/" + amount,
+        process.env.URL+"/api/brandproducts/getproducts/" + amount,
         { cache: "no-store" }
       );
       if (!response.ok) {
@@ -55,7 +55,7 @@ const Page = () => {
   const brandList = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/brandproducts/brandslist/",
+        process.env.URL+"/api/brandproducts/brandslist/",
         { cache: "no-store" }
       );
       if (!response.ok) {
@@ -73,7 +73,7 @@ const Page = () => {
     if (p_id) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/brandproducts/deleteproduct/" + p_id
+          process.env.URL+"/api/brandproducts/deleteproduct/" + p_id
         );
         const data = await response.json();
         console.log(data);
@@ -102,7 +102,7 @@ const Page = () => {
     ) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/brandproducts/addproduct",
+          process.env.URL+"/api/brandproducts/addproduct",
           {
             method: "POST",
             headers: {
@@ -141,7 +141,7 @@ const Page = () => {
     ) {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/brandproducts/updateproduct",
+          process.env.URL+"/api/brandproducts/updateproduct",
           {
             method: "POST",
             headers: {
@@ -289,7 +289,7 @@ const Page = () => {
               {products
                 ? products.map((data) => {
                     return (
-                      <tr>
+                      <tr key={data.p_id}>
                         <td
                           style={{
                             border: "1px solid red",

@@ -7,7 +7,7 @@ import Link from "next/link";
 const getProducts = async () => {
   console.log("he");
   let response = await fetch(
-    "http://localhost:3000/api/tools/getproducts/100",
+    process.env.URL+"/api/tools/getproducts/100",
     { cache: "no-store" }
   );
   let result = await response.json();
@@ -17,28 +17,26 @@ const getProducts = async () => {
 const Page = async () => {
   let data = await getProducts();
 
-
   return (
     <>
       <Header />
       <div className={style.main}>
-        {data.map((data) => {
-          return (
-            <Link
-              href={"/tools/" + data.p_id}
-              style={{ color: "black" }}
-            >
-              <ProductCard
-                title={data.name}
-                img={"19"}
-                folder={"tools"}
-                price={data.price}
-                discount={parseInt(data.discount)}
-                key={data.p_id}
-              />
-            </Link>
-          );
-        })}
+        {data
+          ? data.map((data) => {
+              return (
+                <Link href={"/tools/" + data.p_id} style={{ color: "black" }}>
+                  <ProductCard
+                    title={data.name}
+                    img={"19"}
+                    folder={"tools"}
+                    price={data.price}
+                    discount={parseInt(data.discount)}
+                    key={data.p_id}
+                  />
+                </Link>
+              );
+            })
+          : ""}
       </div>
     </>
   );

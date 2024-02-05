@@ -1,6 +1,6 @@
 export const fetchApi = async ({ body, route }) => {
   try {
-    const response = await fetch("http://localhost:3000" + route, {
+    const response = await fetch(process.env.URL+"" + route, {
       method: "POST",
       body: JSON.stringify(body),
     });
