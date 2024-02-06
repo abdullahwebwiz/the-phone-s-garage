@@ -10,12 +10,13 @@ export const POST = async (req) => {
     await mongoose.connect(mdb_url);
     const wishlist = payload.wishlist;
     const query = { p_id: { $in: wishlist } };
-    const result = await Product1.find(query);
-    console.log(result);
-    return NextResponse.json(result);
+    const result1 = await Product1.find(query);
+    const result2 = await Product2.find(query);
+    const result3 = await Product3.find(query);
+    console.log([...result1, ...result2, ...result3]);
+    return NextResponse.json([...result1, ...result2, ...result3]);
   } catch (error) {
     console.error("Error connecting to MongoDB", error.message);
     return NextResponse.json({ msg: "error" });
   }
 };
-

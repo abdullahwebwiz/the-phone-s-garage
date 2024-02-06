@@ -5,6 +5,7 @@ import style from "../tools.module.css";
 import Image from "next/image";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Button } from "@mui/material";
 import ProductSection from "@/components/productsection/productsection";
@@ -39,41 +40,6 @@ const Page = ({ params }) => {
     getProduct();
   }, []);
 
-  const handleWishlist = async () => {
-    alert(productid);
-    alert(userid);
-    if (productid && userid) {
-      try {
-        const response = await fetch(
-          process.env.URL + "/api/addwishlist/" + userid + "/" + productid,
-          { cache: "no-store" }
-        );
-        const result = await response.json();
-        console.log(result);
-        if (result.msg == "success") {
-          Swal.fire({
-            title: "Success",
-            text: "Product successfully added to wishlist",
-            icon: "success",
-          });
-        } else {
-          Swal.fire({
-            title: "error",
-            text: "Something went wrong",
-            icon: "success",
-          });
-        }
-      } catch (error) {
-        Swal.fire({
-          title: "Error",
-          text: "Something went wrong",
-          icon: "error",
-        });
-        console.error("Error fetching product:", error);
-      }
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -86,7 +52,11 @@ const Page = ({ params }) => {
             </div>
             <div className={style.imgtitle}>
               <div className={style.img}>
-                <Image src={"/tools/19.png"} width={250} height={250} />
+                <Image
+                  src={"/tools/" + data.img + ".png"}
+                  width={250}
+                  height={250}
+                />
               </div>
               <div className={style.details}>
                 <div className={style.title}>{data.name}</div>
@@ -97,11 +67,15 @@ const Page = ({ params }) => {
                 <div className={style.buttons}>
                   <Button
                     variant="contained"
-                    endIcon={<FavoriteBorderIcon />}
-                    style={{ backgroundColor: "hotpink", fontWeight: "600" }}
-                    onClick={handleWishlist}
+                    endIcon={<WhatsAppIcon />}
+                    style={{ backgroundColor: "	#25D366", fontWeight: "600" }}
+                    onClick={() => {
+                      if (client) {
+                        window.open("https://www/web.whatsapp.com", "_blank");
+                      }
+                    }}
                   >
-                    WishList
+                    Buy Now
                   </Button>
                   <Button
                     variant="contained"

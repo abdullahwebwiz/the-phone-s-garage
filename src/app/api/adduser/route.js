@@ -2,7 +2,7 @@ import { mdb_url } from "@/lib/db";
 import { User } from "@/lib/model/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
-
+import Randomstring from "randomstring";
 export const POST = async (req) => {
   console.log("API IS CALLED YES!!!");
   let payload = await req.json();
@@ -10,7 +10,7 @@ export const POST = async (req) => {
     await mongoose.connect(mdb_url);
     let users = new User({
       user_id:
-        Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000,
+      Randomstring.generate(20),
       user_name: payload.user_name,
       user_phone: payload.user_phone,
       user_city: payload.user_city,

@@ -2,7 +2,7 @@ import Header from "@/components/header/header";
 import style from "./tools.module.css";
 import ProductCard from "@/components/productsection/productcard/productcard";
 import Link from "next/link";
-// title, img, price, discount,folder, link
+
 
 const getProducts = async () => {
   console.log("he");
@@ -10,7 +10,7 @@ const getProducts = async () => {
     cache: "no-store",
   });
   let result = await response.json();
-  //   console.log(result);
+
   return result;
 };
 const Page = async () => {
@@ -30,7 +30,7 @@ const Page = async () => {
                 >
                   <ProductCard
                     title={data.name}
-                    img={"19"}
+                    img={data.img}
                     folder={"tools"}
                     price={data.price}
                     discount={parseInt(data.discount)}

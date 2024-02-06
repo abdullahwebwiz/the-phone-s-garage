@@ -1,8 +1,8 @@
 import { mdb_url } from "@/lib/db";
-import { Product3 } from "@/lib/model/product3";
+import { User } from "@/lib/model/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
-import Randomstring from "randomstring";
+
 export const POST = async (req) => {
   let payload = await req.json();
   console.log("api called");
@@ -10,19 +10,20 @@ export const POST = async (req) => {
   if (payload) {
     try {
       await mongoose.connect(mdb_url);
-      let users = new Product3({
-        p_id:
-        Randomstring.generate(20),
-        name: payload.name,
-        price: payload.price,
-        description: payload.description,
-        img: Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000,
-        video: payload.video,
-        discount: payload.discount,
-      });
-      let result = await users.save();
-      console.log(result);
-      if (result) {
+      const newData = {
+        user_name: payload.name,
+        user_phone: payload.phone,
+        user_city: payload.city,
+        user_address: payload.address,
+      };
+      let data = await User.findOneAndUpdate(
+        { user_id: payload.userid },
+        { $set: newData },
+        { new: true }
+      );
+
+      console.log(data);
+      if (data) {
         return NextResponse.json({ msg: "success" });
       } else {
         return NextResponse.json({ msg: "failed" });

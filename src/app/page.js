@@ -31,14 +31,21 @@ export default function Home() {
         title={"Accessories 🎧"}
         data={data1}
         folder={"accessories"}
+        link={"accessories"}
       />
       <ProductSection
         title={"Batteries 🔋"}
         data={data2}
         folder={"batteries"}
+        link={"spareparts"}
       />
       <Banner11 />
-      <ProductSection title={"Tools 🛠️"} data={data3} folder={"tools"} />
+      <ProductSection
+        title={"Tools 🛠️"}
+        data={data3}
+        folder={"tools"}
+        link={"tools"}
+      />
       <WhyUs />
       <ReviewSection />
       <NewsLetter />

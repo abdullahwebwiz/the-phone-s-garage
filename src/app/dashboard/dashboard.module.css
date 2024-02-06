@@ -26,3 +26,13 @@
 .details div {
   margin: 5px;
 }
+
+.wishlist {
+  margin-top: 20px;
+  width: 100%;
+}
+.wishtitle {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}

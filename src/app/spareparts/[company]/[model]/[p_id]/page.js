@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import Header from "@/components/header/header";
-import style from "../tools.module.css";
+import style from "@/app/tools/tools.module.css";
 import Image from "next/image";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Button } from "@mui/material";
 import ProductSection from "@/components/productsection/productsection";
 import { useSelector } from "react-redux";
@@ -14,24 +13,25 @@ import Swal from "sweetalert2";
 import { copy } from "clipboard";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const Page = ({ params }) => {
   const [data, setData] = useState(null);
   const [client, setclient] = useState(false);
-  let userid = useSelector((data) => data.reducer1.userid);
-  let productid = params.p_id;
-  let router = useRouter();
-  const getProduct = async (p_id) => {
-    try {
-      const response = await fetch(
-        process.env.URL + "/api/tools/getproduct/" + params.p_id,
-        { cache: "no-store" }
-      );
-      const result = await response.json();
-      console.log(result);
-      setData(result);
-    } catch (error) {
-      console.error("Error fetching product:", error);
+
+  const getProduct = async () => {
+    if (params) {
+      try {
+        const response = await fetch(
+          process.env.URL + "/api/getsparepartdata/" + params.p_id,
+          { cache: "no-store" }
+        );
+        const result = await response.json();
+        console.log(result);
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     }
   };
 
@@ -40,41 +40,6 @@ const Page = ({ params }) => {
     getProduct();
   }, []);
 
-  const handleWishlist = async () => {
-    alert(productid);
-    alert(userid);
-    if (productid && userid) {
-      try {
-        const response = await fetch(
-          process.env.URL + "/api/testing/" + userid + "/" + productid,
-          { cache: "no-store" }
-        );
-        const result = await response.json();
-        console.log(result);
-        if (result.msg == "success") {
-          Swal.fire({
-            title: "Success",
-            text: "Product successfully added to wishlist",
-            icon: "success",
-          });
-        } else {
-          Swal.fire({
-            title: "error",
-            text: "Something went wrong",
-            icon: "success",
-          });
-        }
-      } catch (error) {
-        Swal.fire({
-          title: "Error",
-          text: "Something went wrong",
-          icon: "error",
-        });
-        console.error("Error fetching product:", error);
-      }
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -82,7 +47,7 @@ const Page = ({ params }) => {
         <>
           <div className={style.maincon}>
             <div className={style.navshow}>
-              {"Products > tools > "}
+              {"Products > spareparts > "}
               <span style={{ wordSpacing: "0" }}>{data.name}</span>
             </div>
             <div className={style.imgtitle}>

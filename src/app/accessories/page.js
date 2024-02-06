@@ -32,7 +32,7 @@ const Page = async () => {
                 >
                   <ProductCard
                     title={data.name}
-                    img={"6"}
+                    img={data.img}
                     folder={"accessories"}
                     price={data.price}
                     discount={parseInt(data.discount)}
